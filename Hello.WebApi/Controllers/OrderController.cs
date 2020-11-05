@@ -28,10 +28,10 @@ namespace Hello.Api.Controllers
 		//	return Ok(await _nhanSuSerive.GetAll());
 		//}
 
-		[HttpGet("GetOrder/{id}")]
-		public async Task<IActionResult> GetOrder(int id)
+		[HttpGet("GetOrder")]
+		public async Task<IActionResult> GetOrder()
 		{
-			return Ok(await _nhanSuSerive.GetOrder(id));
+			return Ok(await _nhanSuSerive.GetOrder());
 		}
 
 

@@ -7,75 +7,108 @@
 <div class="container-fluid p-0" style="height: 100vh;min-width: 1000px">
     <div class="float-left" style="width: 350px;height: 100vh;border-right: 2px solid #ccc">
         <div style="width: 100%;height: 50px;background: #fff"></div>
-        <div class="p-2 pt-2" style="width: 100%;height: calc(100vh - 250px);background: #fff;">
-            <div class="shadow-sm mb-2" style="width: 100%;">
-                <div class="float-left" style="height: 55px;width: 60px;background: pink">
-                    <img src="123302422_689902975256866_1137738621106190861_n.jpg" width="100%" height="100%">
-                </div>
-                <div class="float-left p-1 pt-0" style="height: 50px;width: calc(100% - 140px);">
-                    <p class="font-weight-bold mb-0 cl ml-1" style="font-size: 90%">Granny Smith apples</p>
-                    <p class="cl mb-0 ml-1" style="font-size: 90%">3.000 kg at 1.63$/kg</p>
-                </div>
-                <div class="float-right p-1" style="width: 80px;height: 50px;">
-                    <p class="font-weight-bold float-right cl" style="font-size: 90%">4.84$</p>
-                </div>
-                <div style="clear: both;"></div>
-            </div>
+        <div  style="width: 100%;height: calc(100vh - 250px);background: #fff;">
+            <div class="p-2 pt-2" style="height: calc(100vh - 350px);overflow-y: scroll;">
+                <div id="ListItem">
 
-            <div class="shadow-sm mb-2" style="width: 100%;">
-                <div class="float-left" style="height: 55px;width: 60px;background: pink">
-                    <img src="123302422_689902975256866_1137738621106190861_n.jpg" width="100%" height="100%">
                 </div>
-                <div class="float-left p-1 pt-0" style="height: 50px;width: calc(100% - 140px);">
-                    <p class="font-weight-bold mb-0 cl ml-1" style="font-size: 90%">Granny Smith apples</p>
-                    <p class="cl mb-0 ml-1" style="font-size: 90%">Số lượng: 3</p>
                 </div>
-                <div class="float-right p-1" style="width: 80px;height: 50px;">
-                    <p class="font-weight-bold float-right cl" style="font-size: 90%">4.84$</p>
+                <div class="shadow-sm p-2" style="width: 100%;">
+                    <p class="float-left mb-0">Giam giá</p>
+                    <p class="float-right mb-0">10000đ</p>
+                    <div style="clear: both;"></div>
+                    <p class="float-left mb-0">Phí</p>
+                    <p class="float-right mb-0">2000đ</p>
+                    <div style="clear: both;"></div>
+                    <p class="float-left mb-0 font-weight-bold">Tổng cộng</p>
+                    <p class="float-right mb-0 font-weight-bold">800.000đ</p>
+                    <div style="clear: both;"></div>
                 </div>
-                <div style="clear: both;"></div>
             </div>
-            <div class="shadow-sm p-2" style="width: 100%;">
-                <p class="float-left mb-0">Giam giá</p>
-                <p class="float-right mb-0">10000đ</p>
-                <div style="clear: both;"></div>
-                <p class="float-left mb-0">Phí</p>
-                <p class="float-right mb-0">2000đ</p>
-                <div style="clear: both;"></div>
-                <p class="float-left mb-0 font-weight-bold">Tổng cộng</p>
-                <p class="float-right mb-0 font-weight-bold">800.000đ</p>
-                <div style="clear: both;"></div>
-            </div>
-        </div>
-        <div class="pl-3 pr-3 pt-2 pb-2" style="width: 100%;height: 200px;background: #d1d1d2;border-top: 3px solid #66be92">
-            <div style="width: 100%;height: 100%;border: 1px solid #b9b9b9;display: flex;border-radius: 7px">
-                <div style="width: 150px;height: 100%;border: 1px solid #b9b9b9;">
-                    <div style="width: 100%;height: 50px;border-bottom: 1px solid #b9b9b9;"></div>
-                    <div style="width: 100%;height: calc(100% - 50px);border-top: 1px solid #b9b9b9;"></div>
+            <div class="pl-3 pr-3 pt-2 pb-2" style="width: 100%;height: 200px;background: #d1d1d2;border-top: 3px solid #66be92">
+                <div style="width: 100%;height: 100%;border: 1px solid #b9b9b9;display: flex;border-radius: 7px">
+                    <div style="width: 150px;height: 100%;border: 1px solid #b9b9b9;">
+                        <div style="width: 100%;height: 50px;border-bottom: 1px solid #b9b9b9;"></div>
+                        <div style="width: 100%;height: calc(100% - 50px);border-top: 1px solid #b9b9b9;"></div>
+                    </div>
+                    <div style="width: 170px;height: 100%;border: 1px solid #b9b9b9;"></div>
                 </div>
-                <div style="width: 170px;height: 100%;border: 1px solid #b9b9b9;"></div>
             </div>
         </div>
-    </div>
     <div class="float-right" style="width: calc(100% - 350px);height: 100vh;">
         <div style="width: 100%;height: 50px;background: pink;"></div>
         <div style="width: 100%;height: 50px;background: blue;"></div>
-        <div class="row m-0 p-2">
-            @foreach (var item in Model)
-            {
-                <div class="col-2 p-2" onclick="addToCart(@item.id)">
-                    <div class="shadow-sm" style="width: 100%;height: 160px;background: #fff;">
-                        <img src="@("/image/"+item.image)" width="100%" height="100px">
-                        <p class="font-weight-bold text-center mt-1 mb-0">@item.name</p>
-                        <p class="text-center">@(item.price)đ</p>
+        
+            <div class="row m-0 p-2">
+                @foreach (var item in Model)
+                {
+                    <div onclick="getIdProduct(@item.id)" class="col-2 p-2">
+                        <div class="shadow-sm" style="width: 100%;height: 160px;background: #fff;">
+                            <img src="@("/image/"+item.image)" width="100%" height="100px">
+                            <p class="font-weight-bold text-center mt-1 mb-0">@item.name</p>
+                            <p class="text-center">@(item.price)đ</p>
+                        </div>
                     </div>
-                </div>
-            }
+                }
             </div>
+       
     </div>
 </div>
 <script>
-    function addToCart(id) {
-        alert(id);
+    function getIdProduct(id) {
+        var SetData = $("#ListItem");
+        SetData.html("");
+            $.ajax({
+                method: "post",
+                url: "https://localhost:44358/api/Tbl_item/Create",
+                data: JSON.stringify({
+                    idproduct: id,
+                    discount: 0,
+                    quanlity: 0
+                }),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function (data) {                
+                    featchListItem();
+                }
+    });
+    }
+</script>
+<script>
+    featchListItem();
+    function featchListItem() {
+    $(document).ready(function () {
+        var SetData = $("#ListItem");
+        SetData.html("");
+            $.ajax({
+                type: "get",
+                dataType:"json",
+                url: "https://localhost:44358/api/Tbl_order/GetOrder",
+                contentType: "html",
+                success: function (data) {
+                    console.log(data);
+                    $.each(data, function (index, value) {
+                        //alert(data[index].name);
+                        var Data = `
+<div class="shadow-sm mb-2" style="width: 100%;">
+                <div class="float-left" style="height: 55px;width: 60px;background: pink">
+                    <img src="/image/` + value.image + `" width="100%" height="100%">
+                </div>
+                <div class="float-left p-1 pt-0" style="height: 50px;width: calc(100% - 140px);">
+                    <p class="font-weight-bold mb-0 cl ml-1" style="font-size: 90%">` + value.name + `</p>
+                    <p class="cl mb-0 ml-1" style="font-size: 90%">Số lượng: ` + value.quanlity + `</p>
+                </div>
+                <div class="float-right p-1" style="width: 80px;height: 50px;">
+                    <p class="font-weight-bold float-right cl" style="font-size: 90%">` + value.price + `đ</p>
+                </div>
+                <div style="clear: both;"></div>
+            </div>`;
+                        SetData.append(Data);
+                    });
+                }
+            });
+    });
     }
 </script>

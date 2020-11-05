@@ -22,12 +22,13 @@ namespace HocDotNet.Application.MTbl_item
 
 		public async Task<int> Create(Tbl_itemRequest tbl_itemRequest)
 		{
+			int maxId = _context.tbl_orders.Max(u => u.id);
 			var tbl_item = new tbl_item()
 			{
 				idproduct = tbl_itemRequest.idproduct,
 				discount = tbl_itemRequest.discount,
 				quanlity = tbl_itemRequest.quanlity,
-				idorder = tbl_itemRequest.idorder
+				idorder = maxId
 			};
 			_context.tbl_items.Add(tbl_item);
 

@@ -53,8 +53,6 @@ C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\Hello.Application.pdb
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\Hello.Data.pdb
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.csprojAssemblyReference.cache
-C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.csproj.CoreCompileInputs.cache
-C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.RazorAssemblyInfo.cache
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.RazorAssemblyInfo.cs
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.AssemblyInfoInputs.cache
@@ -78,3 +76,5 @@ C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.dll
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.pdb
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.genruntimeconfig.cache
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.csproj.CoreCompileInputs.cache
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.MvcApplicationPartsAssemblyInfo.cache

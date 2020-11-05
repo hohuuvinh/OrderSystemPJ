@@ -15,7 +15,7 @@ namespace Hello.Application.MTbl_order
 
 		//public Task<List<Tbl_orderResponse>> GetAll();
 
-		public Task<List<Tbl_orderResponse>> GetOrder(int id);
+		public Task<List<Tbl_orderResponse>> GetOrder();
 
 	}
 }
