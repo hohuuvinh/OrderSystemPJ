@@ -56,6 +56,7 @@ namespace HocDotNet.Application.MTbl_order
 
 			return await _context.SaveChangesAsync();
 		}
+
 		public async Task<List<Tbl_orderResponse>> GetOrder()
 		{
 			int maxId = _context.tbl_orders.Max(u => u.id);
@@ -65,8 +66,12 @@ namespace HocDotNet.Application.MTbl_order
 						where or.id == maxId
 						select new { or, it , pr };
 			return await query.Select(x => new Tbl_orderResponse()
-			{
+			{	
+				
 				id = x.pr.id,
+				iditem = x.it.id,
+				idproduct = x.pr.id,
+				idorder=x.or.id,
 				discount = x.it.discount,
 				quanlity = x.it.quanlity,
 				name = x.pr.name,

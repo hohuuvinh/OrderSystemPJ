@@ -43,6 +43,11 @@ namespace Hello.Api.Controllers
 		{
 			return Ok(await _nhanSuSerive.Update(request));
 		}
+		[HttpPost("UpdateQuanlity")]
+		public async Task<IActionResult> UpdateQuanlity([FromBody]Tbl_itemRequest request)
+		{
+			return Ok(await _nhanSuSerive.Update(request));
+		}
 
 		// POST: api/Tbl_item/Delete
 		[HttpPost("Delete")]

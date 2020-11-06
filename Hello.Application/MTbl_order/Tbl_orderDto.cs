@@ -7,6 +7,10 @@ namespace Hello.Application.MTbl_order
     public class Tbl_orderDto
     {
         public int id { get; set; }
+
+        public int iditem { get; set; }
+        public int idproduct { get; set; }
+        public int idorder { get; set; }
         public float discount { get; set; }
         public int quanlity { get; set; }
         public string name { get; set; }

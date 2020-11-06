@@ -13,6 +13,7 @@ namespace Hello.Application.MTbl_item
 
 		public Task<int> Delete(Tbl_itemRequest tbl_itemRequest);
 
+		public Task<int> UpdateQuanlity(Tbl_itemRequest tbl_itemRequest);
 		public Task<List<Tbl_itemResponse>> GetAll();
 
 	}

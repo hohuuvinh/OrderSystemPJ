@@ -5,7 +5,7 @@
 }
 
 <div class="container-fluid p-0" style="height: 100vh;min-width: 1000px">
-    <div class="float-left" style="width: 350px;height: 100vh;border-right: 2px solid #ccc">
+    <div class="float-left" style="width: 380px;height: 100vh;border-right: 2px solid #ccc">
         <div style="width: 100%;height: 50px;background: #fff"></div>
         <div  style="width: 100%;height: calc(100vh - 250px);background: #fff;">
             <div class="p-2 pt-2" style="height: calc(100vh - 350px);overflow-y: scroll;">
@@ -35,46 +35,120 @@
                 </div>
             </div>
         </div>
-    <div class="float-right" style="width: calc(100% - 350px);height: 100vh;">
+    <div class="float-right" style="width: calc(100% - 380px);height: 100vh;">
         <div style="width: 100%;height: 50px;background: pink;"></div>
         <div style="width: 100%;height: 50px;background: blue;"></div>
         
-            <div class="row m-0 p-2">
-                @foreach (var item in Model)
-                {
-                    <div onclick="getIdProduct(@item.id)" class="col-2 p-2">
-                        <div class="shadow-sm" style="width: 100%;height: 160px;background: #fff;">
-                            <img src="@("/image/"+item.image)" width="100%" height="100px">
-                            <p class="font-weight-bold text-center mt-1 mb-0">@item.name</p>
-                            <p class="text-center">@(item.price)đ</p>
-                        </div>
+        <div class="row m-0 p-2">
+            @foreach (var item in Model)
+            {
+                <div onclick="addToCart(@item.id)" class="col-2 p-2">
+                    <div class="shadow-sm" style="width: 100%;height: 160px;background: #fff;">
+                        <img src="@("/image/"+item.image)" width="100%" height="100px">
+                        <p class="font-weight-bold text-center mt-1 mb-0">@item.name</p>
+                        <p class="text-center">@(item.price)đ</p>
                     </div>
-                }
-            </div>
+                </div>
+            }
+        </div>
+        
        
     </div>
 </div>
 <script>
-    function getIdProduct(id) {
+    function addToCart(id) {
+        var check = -1;
+        $(document).ready(function () {
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "https://localhost:44358/api/Tbl_order/GetOrder",
+                contentType: "html",
+                success: function (data) {
+                    console.log(data);
+                    $.each(data, function (index, value) { 
+                        console.log(value.idproduct);
+                        console.log(id);
+                        if (value.idproduct == id) {
+                            
+                            check = 1;
+                            return false;
+                        } else {
+                            check = 0;                        
+                        }
+                    });
+                    //console.log("chon o" + check);
+                    if (check == 1) {
+                        var iditem = $("#iditem" + id).val();
+                        var discount = $("#discount" + id).val();
+                        var quanlity = $("#quanlity" + id).val();
+                        var idproduct = $("#idproduct" + id).val();
+                        var idorder = $("#idorder" + id).val();
+                        //console.log(iditem);
+                        var SetData = $("#ListItem");
+                        SetData.html("");
+                        $.ajax({
+                            method: "post",
+                            url: "https://localhost:44358/api/Tbl_item/UpdateQuanlity",
+                            data: JSON.stringify({
+                                id: parseInt(iditem),
+                                discount: parseInt(discount),
+                                quanlity: parseInt(1*quanlity+1),
+                                idproduct: parseInt(idproduct),
+                                idorder: parseInt(idorder)
+                            }),
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            success: function (data) {
+                                featchListItem();
+                            }
+                        });
+                    } else {             
+                        var SetData = $("#ListItem");
+                        SetData.html("");
+                        $.ajax({
+                            method: "post",
+                            url: "https://localhost:44358/api/Tbl_item/Create",
+                            data: JSON.stringify({
+                                idproduct: id,
+                                discount: 0,
+                                quanlity: 1
+                            }),
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            success: function (data) {
+                                featchListItem();
+                            }
+                        });
+                    }
+                }
+            });         
+        });
+    }
+    
+    function deleteItem(id) {
         var SetData = $("#ListItem");
         SetData.html("");
-            $.ajax({
-                method: "post",
-                url: "https://localhost:44358/api/Tbl_item/Create",
-                data: JSON.stringify({
-                    idproduct: id,
-                    discount: 0,
-                    quanlity: 0
-                }),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                success: function (data) {                
-                    featchListItem();
-                }
-    });
+        $.ajax({
+            method: "post",
+            url: "https://localhost:44358/api/Tbl_item/Delete",
+            data: JSON.stringify({
+                id: id
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            success: function (data) {
+                featchListItem();
+            }
+        });
     }
+
 </script>
 <script>
     featchListItem();
@@ -88,22 +162,30 @@
                 url: "https://localhost:44358/api/Tbl_order/GetOrder",
                 contentType: "html",
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $.each(data, function (index, value) {
                         //alert(data[index].name);
                         var Data = `
 <div class="shadow-sm mb-2" style="width: 100%;">
-                <div class="float-left" style="height: 55px;width: 60px;background: pink">
+                <div class="float-left" style="height: 55px;width: 60px;">
                     <img src="/image/` + value.image + `" width="100%" height="100%">
                 </div>
-                <div class="float-left p-1 pt-0" style="height: 50px;width: calc(100% - 140px);">
+                <div class="float-left p-1 pt-0" style="height: 50px;width: calc(100% - 170px);">
                     <p class="font-weight-bold mb-0 cl ml-1" style="font-size: 90%">` + value.name + `</p>
                     <p class="cl mb-0 ml-1" style="font-size: 90%">Số lượng: ` + value.quanlity + `</p>
                 </div>
+                   <div onclick="deleteItem(` + value.iditem + `)" class="float-right p-1 bg-success" style="width: 30px;height: 55px;">
+						
+					</div>
                 <div class="float-right p-1" style="width: 80px;height: 50px;">
                     <p class="font-weight-bold float-right cl" style="font-size: 90%">` + value.price + `đ</p>
                 </div>
                 <div style="clear: both;"></div>
+                <input style="display:none" id="iditem`+ value.idproduct + `" value="` + value.iditem + `"/>
+                <input style="display:none" id="discount`+ value.idproduct + `" value="` + value.discount + `"/>
+                <input style="display:none" id="quanlity`+ value.idproduct + `" value="` + value.quanlity + `"/>
+                <input style="display:none" id="idproduct`+ value.idproduct + `" value="` + value.idproduct + `"/>
+                <input style="display:none" id="idorder`+ value.idproduct + `" value="` + value.idorder + `"/>
             </div>`;
                         SetData.append(Data);
                     });
