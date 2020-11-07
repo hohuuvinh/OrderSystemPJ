@@ -113,7 +113,9 @@
                                 'Content-Type': 'application/json'
                             },
                             success: function (data) {
+                                checkSelect = 0;
                                 featchListItem();
+                                number = '';
                             }
                         });
                     } else {
@@ -144,6 +146,7 @@
     function deleteItem(id) {
         var SetData = $("#ListItem");
         SetData.html("");
+        idItemMax = 0;
         $.ajax({
             method: "post",
             url: "https://localhost:44358/api/Tbl_item/Delete",
@@ -154,7 +157,8 @@
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            success: function (data) {
+            success: function (data) { 
+                checkSelect = 0;
                 featchListItem();
             }
         });
@@ -196,9 +200,9 @@
                 success: function (data) {
                     //console.log(data);
                     $.each(data, function (index, value) {
-                        total += value.price * value.quanlity * ((100 - value.discount) / 100);
-                        discount += value.price * value.quanlity * value.discount / 100;
-                        var priceItem = value.price * value.quanlity * ((100 - value.discount) / 100);
+                        total += parseInt(value.price * value.quanlity * ((100 - value.discount) / 100));
+                        discount += parseInt(value.price * value.quanlity * value.discount / 100);
+                        var priceItem = parseInt(value.price * value.quanlity * ((100 - value.discount) / 100));
 
                         if (checkSelect == 0) {
                             idItemMax = value.iditem;
