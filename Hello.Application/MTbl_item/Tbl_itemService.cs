@@ -61,6 +61,21 @@ namespace HocDotNet.Application.MTbl_item
 			return await _context.SaveChangesAsync();
 		}
 
+		public async Task<int> UpdateDiscount(Tbl_itemRequest tbl_itemRequest)
+		{
+			var tbl_item = new tbl_item()
+			{
+				id = tbl_itemRequest.id,
+				idproduct = tbl_itemRequest.idproduct,
+				discount = tbl_itemRequest.discount,
+				quanlity = tbl_itemRequest.quanlity,
+				idorder = tbl_itemRequest.quanlity,
+			};
+			_context.tbl_items.Update(tbl_item);
+
+			return await _context.SaveChangesAsync();
+		}
+
 		public async Task<int> Update(Tbl_itemRequest tbl_itemRequest)
 		{
 			var tbl_item = new tbl_item()

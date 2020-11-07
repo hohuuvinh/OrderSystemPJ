@@ -6,13 +6,23 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <style type="text/css">
     .cl {
         color: #4c4c4c
     }
+    .shadow-ok2 {
+        -webkit-box-shadow: -1px 2px 16px 1px rgba(32,194,0,0.19);
+        -moz-box-shadow: -1px 2px 16px 1px rgba(32,194,0,0.19);
+        box-shadow: -1px 2px 16px 1px rgba(32,194,0,0.19);
+    }
+    .changeType {
+        color: #fff !important;
+        background: #28a745 !important;
+    }
 </style>
-<body>
+<body style="overflow-y:hidden">
     @RenderBody()
     @RenderSection("Scripts", required: false)
 </body>

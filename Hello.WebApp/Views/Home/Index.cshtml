@@ -3,58 +3,69 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .shadow-ok {
+        -webkit-box-shadow: 0px 2px 12px 2px rgba(218,255,212,0.6);
+        -moz-box-shadow: 0px 2px 12px 2px rgba(218,255,212,0.6);
+        box-shadow: 0px 2px 12px 2px rgba(218,255,212,0.6);
+    }
 
-<div class="container-fluid p-0" style="height: 100vh;min-width: 1000px">
-    <div class="float-left" style="width: 380px;height: 100vh;border-right: 2px solid #ccc">
-        <div style="width: 100%;height: 50px;background: #fff"></div>
-        <div  style="width: 100%;height: calc(100vh - 250px);background: #fff;">
-            <div class="p-2 pt-2" style="height: calc(100vh - 350px);overflow-y: scroll;">
+    #scroll--item::-webkit-scrollbar {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+
+    #scroll--item::-webkit-scrollbar-thumb {
+        background-color: #000000;
+    }
+</style>
+
+<div class="container-fluid p-0" style="height: 100vh; min-width: 1000px">
+    <div class="float-left" style="width: 380px;height: 100vh;border-right: 2px solid #28a745">
+        <div style="width: 100%;height: 50px;background: #fff">
+            <p class="font-weight-bold text-success ml-2 float-left mb-0" style="font-size: 150%;line-height: 50px;">POSystem</p>
+            <p class="float-right mb-0 mr-2" style="line-height: 50px;">Adminitrator</p>
+            <div style="clear: both;"></div>
+        </div>
+        <div style="width: 100%;height: calc(100vh - 250px);background: #fff;">
+            <div id="scroll--item" class="p-2 pt-2" style="height: calc(100vh - 250px);overflow-y: scroll;">
                 <div id="ListItem">
 
                 </div>
-                </div>
-                <div class="shadow-sm p-2" style="width: 100%;">
+                <div class="shadow-ok p-2" style="width: 100%;border-radius:10px">
                     <p class="float-left mb-0">Giam giá</p>
-                    <p class="float-right mb-0">10000đ</p>
+                    <p id="discount" class="float-right mb-0">0</p>
                     <div style="clear: both;"></div>
                     <p class="float-left mb-0">Phí</p>
-                    <p class="float-right mb-0">2000đ</p>
+                    <p class="float-right mb-0">0đ</p>
                     <div style="clear: both;"></div>
                     <p class="float-left mb-0 font-weight-bold">Tổng cộng</p>
-                    <p class="float-right mb-0 font-weight-bold">800.000đ</p>
+                    <p id="total" class="float-right mb-0 font-weight-bold">0</p>
                     <div style="clear: both;"></div>
-                </div>
-            </div>
-            <div class="pl-3 pr-3 pt-2 pb-2" style="width: 100%;height: 200px;background: #d1d1d2;border-top: 3px solid #66be92">
-                <div style="width: 100%;height: 100%;border: 1px solid #b9b9b9;display: flex;border-radius: 7px">
-                    <div style="width: 150px;height: 100%;border: 1px solid #b9b9b9;">
-                        <div style="width: 100%;height: 50px;border-bottom: 1px solid #b9b9b9;"></div>
-                        <div style="width: 100%;height: calc(100% - 50px);border-top: 1px solid #b9b9b9;"></div>
-                    </div>
-                    <div style="width: 170px;height: 100%;border: 1px solid #b9b9b9;"></div>
                 </div>
             </div>
         </div>
+        <partial name="_calculator" />
+    </div>
     <div class="float-right" style="width: calc(100% - 380px);height: 100vh;">
-        <div style="width: 100%;height: 50px;background: pink;"></div>
-        <div style="width: 100%;height: 50px;background: blue;"></div>
-        
+        <partial name="_header" />
         <div class="row m-0 p-2">
             @foreach (var item in Model)
             {
                 <div onclick="addToCart(@item.id)" class="col-2 p-2">
-                    <div class="shadow-sm" style="width: 100%;height: 160px;background: #fff;">
-                        <img src="@("/image/"+item.image)" width="100%" height="100px">
+                    <div class="shadow-ok" style="width: 100%;height: 160px;background: #fff;border-radius:10px;">
+                        <img src="@("/image/"+item.image)" width="100%" height="100px" style="border-top-left-radius:10px;border-top-right-radius:10px;">
                         <p class="font-weight-bold text-center mt-1 mb-0">@item.name</p>
                         <p class="text-center">@(item.price)đ</p>
                     </div>
                 </div>
             }
         </div>
-        
-       
+
+
     </div>
 </div>
+
 <script>
     function addToCart(id) {
         var check = -1;
@@ -66,15 +77,15 @@
                 contentType: "html",
                 success: function (data) {
                     console.log(data);
-                    $.each(data, function (index, value) { 
+                    $.each(data, function (index, value) {
                         console.log(value.idproduct);
                         console.log(id);
                         if (value.idproduct == id) {
-                            
+
                             check = 1;
                             return false;
                         } else {
-                            check = 0;                        
+                            check = 0;
                         }
                     });
                     //console.log("chon o" + check);
@@ -93,7 +104,7 @@
                             data: JSON.stringify({
                                 id: parseInt(iditem),
                                 discount: parseInt(discount),
-                                quanlity: parseInt(1*quanlity+1),
+                                quanlity: parseInt(1 * quanlity + 1),
                                 idproduct: parseInt(idproduct),
                                 idorder: parseInt(idorder)
                             }),
@@ -105,7 +116,7 @@
                                 featchListItem();
                             }
                         });
-                    } else {             
+                    } else {
                         var SetData = $("#ListItem");
                         SetData.html("");
                         $.ajax({
@@ -126,10 +137,10 @@
                         });
                     }
                 }
-            });         
+            });
         });
     }
-    
+
     function deleteItem(id) {
         var SetData = $("#ListItem");
         SetData.html("");
@@ -150,35 +161,69 @@
     }
 
 </script>
+<style>
+    .idItemBoxBackground {
+        background: #ceffd9 !important;
+    }
+</style>
 <script>
+    var idItemMax = 0;
+    var checkSelect = 0;
+    function actionItemMax() {
+        $("#idItemBox" + idItemMax).addClass("idItemBoxBackground");
+        console.log("ok" + idItemMax);
+    }
+
+
+    var idItemNow = -1;
+    var idDiscountNow = -1;
+    var idQuanlityNow = -1;
+    var idProductNow = -1;
+    var idOrderNow = -1;
+
     featchListItem();
     function featchListItem() {
-    $(document).ready(function () {
-        var SetData = $("#ListItem");
-        SetData.html("");
+        var total = 0;
+        var discount = 0;
+        $(document).ready(function () {
+            var SetData = $("#ListItem");
+            SetData.html("");
             $.ajax({
                 type: "get",
-                dataType:"json",
+                dataType: "json",
                 url: "https://localhost:44358/api/Tbl_order/GetOrder",
                 contentType: "html",
                 success: function (data) {
                     //console.log(data);
                     $.each(data, function (index, value) {
-                        //alert(data[index].name);
+                        total += value.price * value.quanlity * ((100 - value.discount) / 100);
+                        discount += value.price * value.quanlity * value.discount / 100;
+                        var priceItem = value.price * value.quanlity * ((100 - value.discount) / 100);
+
+                        if (checkSelect == 0) {
+                            idItemMax = value.iditem;
+                            idItemNow = value.iditem;
+                            idDiscountNow = value.discount;
+                            idQuanlityNow = value.quanlity;
+                            idProductNow = value.idproduct;
+                            idOrderNow = value.idorder;
+                        }
+
+                        
                         var Data = `
-<div class="shadow-sm mb-2" style="width: 100%;">
+                <div onclick="selectItem(` + value.iditem + `,` + value.discount + `,` + value.quanlity + `,` + value.idproduct + `,` + value.idorder + `)" id="idItemBox` + value.iditem + `" class="shadow-ok mb-2 item--box" style="width: 100%; border-radius: 10px">
                 <div class="float-left" style="height: 55px;width: 60px;">
-                    <img src="/image/` + value.image + `" width="100%" height="100%">
+                    <img src="/image/` + value.image + `" width="100%" height="100%" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px">
                 </div>
                 <div class="float-left p-1 pt-0" style="height: 50px;width: calc(100% - 170px);">
                     <p class="font-weight-bold mb-0 cl ml-1" style="font-size: 90%">` + value.name + `</p>
-                    <p class="cl mb-0 ml-1" style="font-size: 90%">Số lượng: ` + value.quanlity + `</p>
+                    <p class="cl mb-0 ml-1 float-left" style="font-size: 90%">Số lượng: ` + value.quanlity + `- Giam gia: </p><p class="float-left" id="discountText` + value.iditem + `" style="font-size: 90%">` + value.discount + `%</p>
                 </div>
-                   <div onclick="deleteItem(` + value.iditem + `)" class="float-right p-1 bg-success" style="width: 30px;height: 55px;">
-						
-					</div>
+                   <div onclick="deleteItem(` + value.iditem + `)" class="float-right p-1 bg-success text-center" style="width: 30px;height: 55px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;">
+                        <i class="fa fa-trash text-white " aria-hidden="true" style="line-height: 46px;"></i>
+                    </div>
                 <div class="float-right p-1" style="width: 80px;height: 50px;">
-                    <p class="font-weight-bold float-right cl" style="font-size: 90%">` + value.price + `đ</p>
+                    <p class="font-weight-bold float-right cl" style="font-size: 90%">` + priceItem + `đ</p>
                 </div>
                 <div style="clear: both;"></div>
                 <input style="display:none" id="iditem`+ value.idproduct + `" value="` + value.iditem + `"/>
@@ -188,9 +233,46 @@
                 <input style="display:none" id="idorder`+ value.idproduct + `" value="` + value.idorder + `"/>
             </div>`;
                         SetData.append(Data);
+
                     });
+                    $("#total").text(total);
+                    $("#discount").text(discount);
+                    actionItemMax();
                 }
+
             });
-    });
+        });
     }
+
+
+    function selectItem(iditem, discount, quanlity, idproduct, idorder) {
+
+        //var btns = document.getElementsByClassName("item--box");
+        //for (var i = 0; i < btns.length; i++) {
+        //    $("item--box").removeClass("idItemBoxBackground");
+        //}
+        checkSelect = 1;
+
+        number = '';
+        idItemMax = iditem;
+        idDiscountNow = discount;
+        idQuanlityNow = quanlity;
+        idProductNow = idproduct;
+        idOrderNow = idorder;
+        console.log(iditem, idDiscountNow, idQuanlityNow, idProductNow, idOrderNow)
+        //$("#idItemBox" + idItemMax).removeClass("idItemBoxBackground");
+        $("#idItemBox" + iditem).addClass("idItemBoxBackground");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 </script>

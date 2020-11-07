@@ -49,6 +49,12 @@ namespace Hello.Api.Controllers
 			return Ok(await _nhanSuSerive.Update(request));
 		}
 
+		[HttpPost("UpdateDiscount")]
+		public async Task<IActionResult> UpdateDiscount([FromBody]Tbl_itemRequest request)
+		{
+			return Ok(await _nhanSuSerive.Update(request));
+		}
+
 		// POST: api/Tbl_item/Delete
 		[HttpPost("Delete")]
 		public async Task<IActionResult> Delete([FromBody]Tbl_itemRequest request)
