@@ -52,7 +52,7 @@
         <div class="row m-0 p-2">
             @foreach (var item in Model)
             {
-                <div onclick="addToCart(@item.id)" class="col-2 p-2">
+                <div onclick="addToCart(@item.id , @item.price)" class="col-2 p-2">
                     <div class="shadow-ok" style="width: 100%;height: 160px;background: #fff;border-radius:10px;">
                         <img src="@("/image/"+item.image)" width="100%" height="100px" style="border-top-left-radius:10px;border-top-right-radius:10px;">
                         <p class="font-weight-bold text-center mt-1 mb-0">@item.name</p>
@@ -67,7 +67,7 @@
 </div>
 
 <script>
-    function addToCart(id) {
+    function addToCart(id,pricedf) {
         var check = -1;
         $(document).ready(function () {
             $.ajax({
@@ -88,14 +88,14 @@
                             check = 0;
                         }
                     });
+                    var iditem = $("#iditem" + id).val();
+                    var discount = $("#discount" + id).val();
+                    var quanlity = $("#quanlity" + id).val();
+                    var price = $("#price" + id).val();
+                    var idproduct = $("#idproduct" + id).val();
+                    var idorder = $("#idorder" + id).val();
                     //console.log("chon o" + check);
-                    if (check == 1) {
-                        var iditem = $("#iditem" + id).val();
-                        var discount = $("#discount" + id).val();
-                        var quanlity = $("#quanlity" + id).val();
-                        var idproduct = $("#idproduct" + id).val();
-                        var idorder = $("#idorder" + id).val();
-                        //console.log(iditem);
+                    if (check == 1) {    
                         var SetData = $("#ListItem");
                         SetData.html("");
                         $.ajax({
@@ -105,6 +105,7 @@
                                 id: parseInt(iditem),
                                 discount: parseInt(discount),
                                 quanlity: parseInt(1 * quanlity + 1),
+                                price: parseInt(price * (1 * quanlity + 1) * ((100 - discount) / 100)),
                                 idproduct: parseInt(idproduct),
                                 idorder: parseInt(idorder)
                             }),
@@ -119,6 +120,7 @@
                             }
                         });
                     } else {
+                        console.log("gia" + price);
                         var SetData = $("#ListItem");
                         SetData.html("");
                         $.ajax({
@@ -127,7 +129,8 @@
                             data: JSON.stringify({
                                 idproduct: id,
                                 discount: 0,
-                                quanlity: 1
+                                quanlity: 1,
+                                price: pricedf
                             }),
                             headers: {
                                 'Accept': 'application/json',
@@ -182,9 +185,9 @@
     var idItemNow = -1;
     var idDiscountNow = -1;
     var idQuanlityNow = -1;
+    var idPriceNow = -1;
     var idProductNow = -1;
     var idOrderNow = -1;
-
     featchListItem();
     function featchListItem() {
         var total = 0;
@@ -209,13 +212,14 @@
                             idItemNow = value.iditem;
                             idDiscountNow = value.discount;
                             idQuanlityNow = value.quanlity;
+                            idPriceNow = value.price;
                             idProductNow = value.idproduct;
                             idOrderNow = value.idorder;
                         }
 
                         
                         var Data = `
-                <div onclick="selectItem(` + value.iditem + `,` + value.discount + `,` + value.quanlity + `,` + value.idproduct + `,` + value.idorder + `)" id="idItemBox` + value.iditem + `" class="shadow-ok mb-2 item--box" style="width: 100%; border-radius: 10px">
+                <div onclick="selectItem(` + value.iditem + `,` + value.discount + `,` + value.quanlity + `,` + value.idproduct + `,` + value.idorder + `,` + value.price + `)" id="idItemBox` + value.iditem + `" class="shadow-ok mb-2 item--box" style="width: 100%; border-radius: 10px">
                 <div class="float-left" style="height: 55px;width: 60px;">
                     <img src="/image/` + value.image + `" width="100%" height="100%" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px">
                 </div>
@@ -233,6 +237,7 @@
                 <input style="display:none" id="iditem`+ value.idproduct + `" value="` + value.iditem + `"/>
                 <input style="display:none" id="discount`+ value.idproduct + `" value="` + value.discount + `"/>
                 <input style="display:none" id="quanlity`+ value.idproduct + `" value="` + value.quanlity + `"/>
+                <input style="display:none" id="price`+ value.idproduct + `" value="` + value.price + `"/>
                 <input style="display:none" id="idproduct`+ value.idproduct + `" value="` + value.idproduct + `"/>
                 <input style="display:none" id="idorder`+ value.idproduct + `" value="` + value.idorder + `"/>
             </div>`;
@@ -248,8 +253,7 @@
         });
     }
 
-
-    function selectItem(iditem, discount, quanlity, idproduct, idorder) {
+    function selectItem(iditem, discount, quanlity, idproduct, idorder, price) {
 
         //var btns = document.getElementsByClassName("item--box");
         //for (var i = 0; i < btns.length; i++) {
@@ -261,6 +265,7 @@
         idItemMax = iditem;
         idDiscountNow = discount;
         idQuanlityNow = quanlity;
+        idPriceNow = price;
         idProductNow = idproduct;
         idOrderNow = idorder;
         console.log(iditem, idDiscountNow, idQuanlityNow, idProductNow, idOrderNow)

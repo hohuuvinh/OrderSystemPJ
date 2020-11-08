@@ -28,6 +28,7 @@ namespace HocDotNet.Application.MTbl_item
 				idproduct = tbl_itemRequest.idproduct,
 				discount = tbl_itemRequest.discount,
 				quanlity = tbl_itemRequest.quanlity,
+				price = tbl_itemRequest.price,
 				idorder = maxId
 			};
 			_context.tbl_items.Add(tbl_item);
@@ -54,6 +55,7 @@ namespace HocDotNet.Application.MTbl_item
 				idproduct = tbl_itemRequest.idproduct,
 				discount = tbl_itemRequest.discount,
 				quanlity = tbl_itemRequest.quanlity,
+				price = tbl_itemRequest.price,
 				idorder = tbl_itemRequest.quanlity,
 			};
 			_context.tbl_items.Update(tbl_item);
@@ -69,6 +71,7 @@ namespace HocDotNet.Application.MTbl_item
 				idproduct = tbl_itemRequest.idproduct,
 				discount = tbl_itemRequest.discount,
 				quanlity = tbl_itemRequest.quanlity,
+				price = tbl_itemRequest.price,
 				idorder = tbl_itemRequest.quanlity,
 			};
 			_context.tbl_items.Update(tbl_item);
@@ -84,6 +87,7 @@ namespace HocDotNet.Application.MTbl_item
 				idproduct = tbl_itemRequest.idproduct,
 				discount = tbl_itemRequest.discount,
 				quanlity = tbl_itemRequest.quanlity,
+				price = tbl_itemRequest.price,
 				idorder = tbl_itemRequest.idorder
 			};
 			_context.tbl_items.Update(tbl_item);
@@ -99,6 +103,7 @@ namespace HocDotNet.Application.MTbl_item
 					idproduct = x.idproduct,
 					discount = x.discount,
 					quanlity = x.quanlity,
+					price = x.price,
 					idorder = x.idorder
 				}).ToListAsync();
 		}
