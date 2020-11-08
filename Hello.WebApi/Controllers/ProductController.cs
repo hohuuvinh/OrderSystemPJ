@@ -28,7 +28,17 @@ namespace Hello.Api.Controllers
 			return Ok(await _nhanSuSerive.GetAll());
 		}
 
-		
+		[HttpGet("GetFood")]
+		public async Task<IActionResult> GetFood()
+		{
+			return Ok(await _nhanSuSerive.GetFood());
+		}
+
+		[HttpGet("GetDrink")]
+		public async Task<IActionResult> GetDrink()
+		{
+			return Ok(await _nhanSuSerive.GetDrink());
+		}
 
 		// POST: api/Tbl_product/Create
 		[HttpPost("Create")]

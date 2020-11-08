@@ -73,18 +73,34 @@ namespace HocDotNet.Application.MTbl_product
 				}).ToListAsync();
 		}
 
-		//public async Task<List<Tbl_productResponse>> GetAll()
-		//{
-		//	var query = from c in _context.tbl_items
-		//				join ct in _context.tbl_products on c.idproduct equals ct.id
-		//				select new { c, ct };
-		//	return await query.Select(x => new Tbl_productResponse()
-		//	{	
-		//		id = x.ct.id,
-		//		quanlity = x.c.quanlity,
-		//		name = x.ct.name,
-		//		discount = x.c.discount
-		//	}).ToListAsync();
-		//}
+		public async Task<List<Tbl_productResponse>> GetFood()
+		{
+			var query = from pr in _context.tbl_products 
+						where pr.category == 1
+						select new { pr };
+			return await query.Select(x => new Tbl_productResponse()
+			{
+				id = x.pr.id,
+				name = x.pr.name,
+				price = x.pr.price,
+				image = x.pr.image,
+				category=x.pr.category
+			}).ToListAsync();
+		}
+
+		public async Task<List<Tbl_productResponse>> GetDrink()
+		{
+			var query = from pr in _context.tbl_products
+						where pr.category == 2
+						select new { pr };
+			return await query.Select(x => new Tbl_productResponse()
+			{
+				id = x.pr.id,
+				name = x.pr.name,
+				price = x.pr.price,
+				image = x.pr.image,
+				category = x.pr.category
+			}).ToListAsync();
+		}
 	}
 }

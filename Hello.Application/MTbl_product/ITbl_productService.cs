@@ -15,5 +15,9 @@ namespace Hello.Application.MTbl_product
 
 		public Task<List<Tbl_productResponse>> GetAll();
 
+		public Task<List<Tbl_productResponse>> GetFood();
+
+		public Task<List<Tbl_productResponse>> GetDrink();
+
 	}
 }

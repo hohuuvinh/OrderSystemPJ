@@ -16,7 +16,7 @@
     }
 
     .scroll--item::-webkit-scrollbar-thumb {
-        background-color: #000000;
+        background-color: green;
     }
 </style>
 
@@ -51,7 +51,7 @@
         <partial name="_header" />
         
         <div class="p-2 pt-2 scroll--item" style="height: calc(100vh - 70px);overflow-y: scroll;">
-            <div class="row m-0 p-2">
+            <div id="GetAll" class="row m-0 p-2">
                 @foreach (var item in Model)
                 {
                     <div onclick="addToCart(@item.id , @item.price)" class="col-2 p-2">
@@ -64,7 +64,76 @@
 
                 }
             </div>
+            <div id="GetAjax" class="row m-0 p-2">
+                
+            </div>
         </div>
+
+        <script>
+            function featchFoodItem() {
+                var SetGetAjax = $("#GetAjax");
+                SetGetAjax.html("");
+                $(document).ready(function () {
+                    $("#GetAll").hide();
+                    $("#GetAjax").show();
+                    $.ajax({
+                        type: "get",
+                        dataType: "json",
+                        url: "https://localhost:44358/api/Tbl_product/GetFood",
+                        contentType: "html",
+                        success: function (data) {
+                            //console.log(data);
+                            $.each(data, function (index, value) {
+                                var Data = `<div onclick="addToCart(` + value.id + ` , ` + value.price + `)" class="col-2 p-2">
+                                <div class="shadow-ok" style="width: 100%;height: 160px;background: #fff;border-radius:10px;">
+                                    <img src="/image/`+ value.image + `" width="100%" height="100px" style="border-top-left-radius:10px;border-top-right-radius:10px;">
+                                    <p class="font-weight-bold text-center mt-1 mb-0" style="font-size:95%">`+ value.name + `</p>
+                                    <p class="text-center">`+ value.price + `đ</p>
+                                </div>
+                            </div>`;
+                                SetGetAjax.append(Data);
+                            }
+                            )
+                        }
+                    });
+                })
+            }
+
+            function featchDrinkItem() {
+                var SetGetAjax = $("#GetAjax");
+                SetGetAjax.html("");
+                $(document).ready(function () {
+                    $("#GetAll").hide();
+                    $("#GetAjax").show();
+                    $.ajax({
+                        type: "get",
+                        dataType: "json",
+                        url: "https://localhost:44358/api/Tbl_product/GetDrink",
+                        contentType: "html",
+                        success: function (data) {
+                            //console.log(data);
+                            $.each(data, function (index, value) {
+                                var Data = `<div onclick="addToCart(` + value.id + ` , ` + value.price + `)" class="col-2 p-2">
+                                <div class="shadow-ok" style="width: 100%;height: 160px;background: #fff;border-radius:10px;">
+                                    <img src="/image/`+ value.image + `" width="100%" height="100px" style="border-top-left-radius:10px;border-top-right-radius:10px;">
+                                    <p class="font-weight-bold text-center mt-1 mb-0" style="font-size:95%">`+ value.name + `</p>
+                                    <p class="text-center">`+ value.price + `đ</p>
+                                </div>
+                            </div>`;
+                                SetGetAjax.append(Data);
+                            }
+                            )
+                        }
+                    });
+                })
+            }
+
+
+            function featchAllItem() {
+                $("#GetAjax").hide();
+                $("#GetAll").show();
+            }
+        </script>
 
 
     </div>
@@ -207,10 +276,8 @@
                 success: function (data) {
                     //console.log(data);
                     $.each(data, function (index, value) {
-                        total += parseInt(value.price * value.quanlity * ((100 - value.discount) / 100));
-                        discount += parseInt(value.price * value.quanlity * value.discount / 100);
-                        //var priceItem = parseInt(value.price * value.quanlity * ((100 - value.discount) / 100));
-
+                        total += parseInt(value.priceItem * ((100 - value.discount) / 100));
+                        discount += parseInt(value.priceItem  * value.discount / 100);                   
                         if (checkSelect == 0) {
                             idItemMax = value.iditem;
                             idItemNow = value.iditem;

@@ -21,12 +21,6 @@ namespace Hello.Api.Controllers
 			_nhanSuSerive = tbl_orderService;
 		}
 
-		// GET: api/<Tbl_orderController>
-		//[HttpGet]
-		//public async Task<IActionResult> Index(int id)
-		//{
-		//	return Ok(await _nhanSuSerive.GetAll());
-		//}
 
 		[HttpGet("GetOrder")]
 		public async Task<IActionResult> GetOrder()
