@@ -13,6 +13,8 @@ namespace Hello.Application.MTbl_order
         public int idorder { get; set; }
         public float discount { get; set; }
         public int quanlity { get; set; }
+
+        public float? priceItem { get; set; }
         public string name { get; set; }
         public float price { get; set; }
         public string image { get; set; }

@@ -74,6 +74,7 @@ namespace HocDotNet.Application.MTbl_order
 				idorder=x.or.id,
 				discount = x.it.discount,
 				quanlity = x.it.quanlity,
+				priceItem = x.it.price,
 				name = x.pr.name,
 				price = x.pr.price,
 				image= x.pr.image,

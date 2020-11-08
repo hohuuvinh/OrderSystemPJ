@@ -10,12 +10,12 @@
         box-shadow: 0px 2px 12px 2px rgba(218,255,212,0.6);
     }
 
-    #scroll--item::-webkit-scrollbar {
+    .scroll--item::-webkit-scrollbar {
         width: 6px;
         background-color: #F5F5F5;
     }
 
-    #scroll--item::-webkit-scrollbar-thumb {
+    .scroll--item::-webkit-scrollbar-thumb {
         background-color: #000000;
     }
 </style>
@@ -28,7 +28,7 @@
             <div style="clear: both;"></div>
         </div>
         <div style="width: 100%;height: calc(100vh - 250px);background: #fff;">
-            <div id="scroll--item" class="p-2 pt-2" style="height: calc(100vh - 250px);overflow-y: scroll;">
+            <div class="p-2 pt-2 scroll--item" style="height: calc(100vh - 250px);overflow-y: scroll;">
                 <div id="ListItem">
 
                 </div>
@@ -49,17 +49,21 @@
     </div>
     <div class="float-right" style="width: calc(100% - 380px);height: 100vh;">
         <partial name="_header" />
-        <div class="row m-0 p-2">
-            @foreach (var item in Model)
-            {
-                <div onclick="addToCart(@item.id , @item.price)" class="col-2 p-2">
-                    <div class="shadow-ok" style="width: 100%;height: 160px;background: #fff;border-radius:10px;">
-                        <img src="@("/image/"+item.image)" width="100%" height="100px" style="border-top-left-radius:10px;border-top-right-radius:10px;">
-                        <p class="font-weight-bold text-center mt-1 mb-0">@item.name</p>
-                        <p class="text-center">@(item.price)đ</p>
+        
+        <div class="p-2 pt-2 scroll--item" style="height: calc(100vh - 70px);overflow-y: scroll;">
+            <div class="row m-0 p-2">
+                @foreach (var item in Model)
+                {
+                    <div onclick="addToCart(@item.id , @item.price)" class="col-2 p-2">
+                        <div class="shadow-ok" style="width: 100%;height: 160px;background: #fff;border-radius:10px;">
+                            <img src="@("/image/"+item.image)" width="100%" height="100px" style="border-top-left-radius:10px;border-top-right-radius:10px;">
+                            <p class="font-weight-bold text-center mt-1 mb-0" style="font-size:95%">@item.name</p>
+                            <p class="text-center">@(item.price)đ</p>
+                        </div>
                     </div>
-                </div>
-            }
+
+                }
+            </div>
         </div>
 
 
@@ -205,7 +209,7 @@
                     $.each(data, function (index, value) {
                         total += parseInt(value.price * value.quanlity * ((100 - value.discount) / 100));
                         discount += parseInt(value.price * value.quanlity * value.discount / 100);
-                        var priceItem = parseInt(value.price * value.quanlity * ((100 - value.discount) / 100));
+                        //var priceItem = parseInt(value.price * value.quanlity * ((100 - value.discount) / 100));
 
                         if (checkSelect == 0) {
                             idItemMax = value.iditem;
@@ -231,7 +235,7 @@
                         <i class="fa fa-trash text-white " aria-hidden="true" style="line-height: 46px;"></i>
                     </div>
                 <div class="float-right p-1" style="width: 80px;height: 50px;">
-                    <p class="font-weight-bold float-right cl" style="font-size: 90%">` + priceItem + `đ</p>
+                    <p class="font-weight-bold float-right cl" style="font-size: 90%">` + value.priceItem + `đ</p>
                 </div>
                 <div style="clear: both;"></div>
                 <input style="display:none" id="iditem`+ value.idproduct + `" value="` + value.iditem + `"/>

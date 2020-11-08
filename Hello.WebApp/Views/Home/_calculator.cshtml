@@ -146,9 +146,17 @@
                     UpdateCalculatorItem();
 				});
 				$("#number_a").click(function(){
-					var string = number;
-					var result = string.substring(0, string.length - 1);
-					number=result
+                    if (type == 0) {
+                        var string1 = idQuanlityNow.toString();
+                        var result1 = string1.substring(0, string1.length - 1);
+                        number = result1;
+                        //console.log("n" + result1);
+                    } else if (type == 1) {
+                        var string2 = idDiscountNow.toString();
+                        var result2 = string2.substring(0, string2.length - 1);
+                        number = result2;
+                        //console.log("l" + result2);
+                    }
                     UpdateCalculatorItem();
 				});
 				$("#number_rs").click(function(){
@@ -156,9 +164,10 @@
 					console.log(number);
 				});
 				$("#number_dot").click(function(){
-					if(type==0){
+					if(type==1){
 						number=number+".";
-						console.log(number);
+                        console.log(number);
+                        UpdateCalculatorItem();
 					}else{
 
 					}
@@ -190,32 +199,40 @@
 				});
 
 
-
     function UpdateCalculatorItem() {
         //var SetData = $("#ListItem");
         //SetData.html("");
+        console.log("ok" + type);
         if (type == 0) {
             $.ajax({
                 method: "post",
-                url: "https://localhost:44358/api/Tbl_item/type0",
+                url: "https://localhost:44358/api/Tbl_item/UpdateQuanlity",
                 data: JSON.stringify({
-                    quanlity: number
+                    id: parseInt(idItemMax),
+                    discount: parseInt(idDiscountNow),
+                    quanlity: parseInt(number),
+                    price: parseInt(idPriceNow * number * ((100 - idDiscountNow) / 100)),
+                    idproduct: parseInt(idProductNow),
+                    idorder: parseInt(idOrderNow)
                 }),
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 success: function (data) {
+                    idQuanlityNow = number;
                     featchListItem();
+
                 }
             });
         } else if (type == 1) {
+            
             $.ajax({
                 method: "post",
                 url: "https://localhost:44358/api/Tbl_item/UpdateDiscount",
                 data: JSON.stringify({
                     id: parseInt(idItemMax),
-                    discount: parseInt(number),
+                    discount: parseFloat(number),
                     quanlity: parseInt(idQuanlityNow),
                     price: parseInt(idPriceNow * idQuanlityNow * ((100 - number) / 100)),
                     idproduct: parseInt(idProductNow),
@@ -226,25 +243,31 @@
                     'Content-Type': 'application/json'
                 },
                 success: function (data) {
-                    //$("#discountText" + idItemMax).text(number+"%");
+                    idDiscountNow = number
                     featchListItem();
                 }
             });
         } else {
             $.ajax({
                 method: "post",
-                url: "https://localhost:44358/api/Tbl_item/type2",
+                url: "https://localhost:44358/api/Tbl_item/UpdateDiscount",
                 data: JSON.stringify({
-                    price: number
+                    id: parseInt(idItemMax),
+                    discount: parseInt(idDiscountNow),
+                    quanlity: parseInt(idQuanlityNow),
+                    price: parseInt(number),
+                    idproduct: parseInt(idProductNow),
+                    idorder: parseInt(idOrderNow)
                 }),
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 success: function (data) {
+                    idPriceNow = number;
                     featchListItem();
                 }
-            });
+            })
         }
     }
 </script>
