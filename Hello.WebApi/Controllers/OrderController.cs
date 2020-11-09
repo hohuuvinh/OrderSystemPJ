@@ -50,7 +50,11 @@ namespace Hello.Api.Controllers
 			return Ok(await _nhanSuSerive.Delete(request));
 		}
 
-
+		[HttpGet("GetOrderMax")]
+		public async Task<IActionResult> GetOrderMax()
+		{
+			return Ok(await _nhanSuSerive.GetOrderMax());
+		}
 
 	}
 }

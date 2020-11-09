@@ -102,5 +102,10 @@ namespace HocDotNet.Application.MTbl_product
 				category = x.pr.category
 			}).ToListAsync();
 		}
+
+		public async Task<tbl_product> SearchProduct(string name)
+		{
+			return await _context.tbl_products.FindAsync(name);
+		}
 	}
 }

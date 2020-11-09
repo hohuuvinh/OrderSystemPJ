@@ -29,6 +29,8 @@ namespace Hello.WebApp
             // Add DI
             services.AddTransient<ITbl_productApiClient, Tbl_productApiClient>();
 
+            services.AddTransient<ITbl_orderApiClient, Tbl_orderApiClient>();
+
             services.AddControllersWithViews();
         }
 

@@ -158,3 +158,4 @@ C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Hello.WebApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\_header.cshtml.g.cs
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\_calculator.cshtml.g.cs
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Order\Index.cshtml.g.cs

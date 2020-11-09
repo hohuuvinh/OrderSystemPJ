@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hello.Application.MTbl_bill;
 using Hello.Application.MTbl_item;
 using Hello.Application.MTbl_order;
+using Hello.Application.MTbl_payment;
 using Hello.Application.MTbl_product;
 using Hello.Data;
+using HocDotNet.Application.MTbl_bill;
 using HocDotNet.Application.MTbl_item;
 using HocDotNet.Application.MTbl_order;
+using HocDotNet.Application.MTbl_payment;
 using HocDotNet.Application.MTbl_product;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +42,8 @@ namespace Hello.WebApi
             services.AddTransient<ITbl_productService, Tbl_productService>();
             services.AddTransient<ITbl_orderService, Tbl_orderService>();
             services.AddTransient<ITbl_itemService, Tbl_itemService>();
+            services.AddTransient<ITbl_paymentService, Tbl_paymentService>();
+            services.AddTransient<ITbl_billService, Tbl_billService>();
 
             services.AddControllersWithViews();
         }

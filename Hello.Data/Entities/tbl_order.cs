@@ -11,7 +11,8 @@ namespace Hello.Data.Entities
     {
         [Key]
         public int id { get; set; }
-        public string fee { get; set; }
+        public float fee { get; set; }
+        public float? discount { get; set; }
         public float total { get; set; }
     }
 }

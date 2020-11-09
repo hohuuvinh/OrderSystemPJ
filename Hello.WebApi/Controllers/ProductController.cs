@@ -61,7 +61,11 @@ namespace Hello.Api.Controllers
 			return Ok(await _nhanSuSerive.Delete(request));
 		}
 
-
+		[HttpGet("SearchProduct/{name}")]
+		public async Task<IActionResult> SearchProduct(string name)
+		{
+			return Ok(await _nhanSuSerive.SearchProduct(name));
+		}
 
 	}
 }

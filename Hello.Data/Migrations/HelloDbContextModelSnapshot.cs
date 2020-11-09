@@ -19,6 +19,30 @@ namespace Hello.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Hello.Data.Entities.tbl_bill", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("create_at")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idorder")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idpayment")
+                        .HasColumnType("int");
+
+                    b.Property<int>("iduser")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("tbl_bill");
+                });
+
             modelBuilder.Entity("Hello.Data.Entities.tbl_item", b =>
                 {
                     b.Property<int>("id")
@@ -53,8 +77,11 @@ namespace Hello.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("fee")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float?>("discount")
+                        .HasColumnType("real");
+
+                    b.Property<float>("fee")
+                        .HasColumnType("real");
 
                     b.Property<float>("total")
                         .HasColumnType("real");
@@ -62,6 +89,30 @@ namespace Hello.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("tbl_order");
+                });
+
+            modelBuilder.Entity("Hello.Data.Entities.tbl_payment", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("idorder")
+                        .HasColumnType("int");
+
+                    b.Property<float>("receive")
+                        .HasColumnType("real");
+
+                    b.Property<float>("refund")
+                        .HasColumnType("real");
+
+                    b.Property<int>("type")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("tbl_payment");
                 });
 
             modelBuilder.Entity("Hello.Data.Entities.tbl_product", b =>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hello.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace Hello.Application.MTbl_product
 		public Task<List<Tbl_productResponse>> GetFood();
 
 		public Task<List<Tbl_productResponse>> GetDrink();
+
+		public Task<tbl_product> SearchProduct(string name);
 
 	}
 }

@@ -15,6 +15,7 @@ namespace Hello.Data
 		public DbSet<tbl_product> tbl_products { get; set; }
 		public DbSet<tbl_order> tbl_orders { get; set; }
 		public DbSet<tbl_item> tbl_items { get; set; }
-
+		public DbSet<tbl_payment> tbl_payments { get; set; }
+		public DbSet<tbl_bill> tbl_bills { get; set; }
 	}
 }

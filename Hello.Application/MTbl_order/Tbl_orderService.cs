@@ -25,6 +25,7 @@ namespace HocDotNet.Application.MTbl_order
 			var tbl_order = new tbl_order()
 			{
 				fee = tbl_orderRequest.fee,
+				discount = tbl_orderRequest.discount,
 				total = tbl_orderRequest.total
 			};
 			_context.tbl_orders.Add(tbl_order);
@@ -46,10 +47,12 @@ namespace HocDotNet.Application.MTbl_order
 
 		public async Task<int> Update(Tbl_orderRequest tbl_orderRequest)
 		{
+			int maxId = _context.tbl_orders.Max(u => u.id);
 			var tbl_order = new tbl_order()
 			{
-				id = tbl_orderRequest.id,
+				id = maxId,
 				fee = tbl_orderRequest.fee,
+				discount=tbl_orderRequest.discount,
 				total = tbl_orderRequest.total
 			};
 			_context.tbl_orders.Update(tbl_order);
@@ -80,6 +83,13 @@ namespace HocDotNet.Application.MTbl_order
 				image= x.pr.image,
 				category = x.pr.category
 			}).ToListAsync();
+		}
+
+
+		public async Task<tbl_order> GetOrderMax()
+		{
+			int maxId = _context.tbl_orders.Max(u => u.id);
+			return await _context.tbl_orders.FirstOrDefaultAsync(x => x.id == maxId);
 		}
 	}
 }

@@ -6,11 +6,13 @@
                     Khách hàng
                 </div>
             </div>
-            <div class="p-1" style="width: 100%;height: calc(100% - 50px);border-top: 1px solid #d1ffca;">
-                <div class="btn btn-success" style="width: 100%;height: 100%">
-                    <p style="line-height: 100px">Thanh toán</p>
+          
+                <div onclick="OrderFinish()" class="p-1" style="width: 100%;height: calc(100% - 50px);border-top: 1px solid #d1ffca;">
+                    <div class="btn btn-success" style="width: 100%;height: 100%">
+                        <p style="line-height: 100px">Thanh toán</p>
+                    </div>
                 </div>
-            </div>
+           
         </div>
         <div style="width: 220px;height: 100%;border: 1px solid #d1ffca;">
             <div style="width: 100%;height: 100%;border-radius: 5px">
@@ -98,6 +100,28 @@
         </div>
     </div>
 </div>
+<script>
+    var totalOrder = 0;
+    var discountOrder = 0;
+    function OrderFinish() {
+        $.ajax({
+            method: "post",
+            url: "https://localhost:44358/api/Tbl_order/Update",
+            data: JSON.stringify({
+                fee: parseInt(0),
+                discount: parseInt(discountOrder),
+                total: parseInt(totalOrder),
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            success: function (data) {
+                window.location.href = "/Order"
+            }
+        });
+    }
+</script>
 
 
 

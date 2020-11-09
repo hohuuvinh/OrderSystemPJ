@@ -140,6 +140,23 @@
 </div>
 
 <script>
+    searchProduct();
+
+    function searchProduct() {
+        $.ajax({
+            method: "get",
+            url: "https://localhost:44358/api/Tbl_product/SearchProduct/m",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+
     function addToCart(id,pricedf) {
         var check = -1;
         $(document).ready(function () {
@@ -317,6 +334,8 @@
                     });
                     $("#total").text(total);
                     $("#discount").text(discount);
+                    totalOrder = total;
+                    discountOrder = discount;
                     actionItemMax();
                 }
 
