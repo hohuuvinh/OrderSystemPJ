@@ -31,6 +31,8 @@ namespace Hello.WebApp
 
             services.AddTransient<ITbl_orderApiClient, Tbl_orderApiClient>();
 
+            services.AddTransient<ITbl_paymentApiClient, Tbl_paymentApiClient>();
+
             services.AddControllersWithViews();
         }
 

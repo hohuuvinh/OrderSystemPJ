@@ -15,7 +15,7 @@ namespace Hello.Application.MTbl_payment
 		public Task<int> Delete(Tbl_paymentRequest tbl_paymentRequest);
 
 		public Task<List<Tbl_paymentResponse>> GetAll();
-
-
+		public Task<Tbl_paymentResponse> GetPaymentMax();
+		
 	}
 }

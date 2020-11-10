@@ -48,6 +48,11 @@ namespace Hello.Api.Controllers
 		{
 			return Ok(await _nhanSuSerive.Delete(request));
 		}
+		[HttpGet("GetPaymentMax")]
+		public async Task<IActionResult> GetOrderMax()
+		{
+			return Ok(await _nhanSuSerive.GetPaymentMax());
+		}
 
 	}
 }

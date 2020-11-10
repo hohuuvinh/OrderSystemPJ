@@ -11,5 +11,12 @@ namespace Hello.Application.MTbl_payment
         public float refund { get; set; }
         public int type { get; set; }
         public int idorder { get; set; }
+        public DateTime create_at { get; set; }
+
+        public string name { get; set; }
+        public float fee { get; set; }
+
+        public float total { get; set; }
+        public float? discount { get; set; }
     }
 }

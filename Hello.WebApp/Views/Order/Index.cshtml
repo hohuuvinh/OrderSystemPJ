@@ -152,9 +152,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div data-toggle="modal" data-target="#exampleModal" class="pl-3" style="width: calc(100% - 350px);">
-                                    <div class="bg-white shadow-ok text-center p-2" style="width: 100%;border-radius: 8px">
-                                        <p class="font-weight-bold mb-0 text-success" style="font-size: 180%"><i class="fa fa-user-circle-o mr-3" aria-hidden="true"></i>Khách hàng</p>
+                                <div class="pl-3" style="width: calc(100% - 350px);">
+                                    <div onclick="fetchUser()" data-toggle="modal" data-target="#exampleModal" class="bg-white shadow-ok text-center p-2" style="width: 100%;border-radius: 8px">
+                                        <p id="selectUserDisplay" class="font-weight-bold mb-0 text-success" style="font-size: 180%"><i class="fa fa-user-circle-o mr-3" aria-hidden="true"></i>Khách hàng</p>
                                     </div>
                                 </div>
                                 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -179,11 +179,8 @@
                                                         background: #e2ffe9;
                                                     }
                                                 </style>
-                                                <div class="infoCustomer--box p-2">
-                                                    <p class="float-left mb-0" style="width: 30%;">drd</p>
-                                                    <p class="float-left mb-0" style="width: 50%;">fđgf</p>
-                                                    <p class="float-left mb-0" style="width: 20%;">7878788</p>
-                                                    <div style="clear: both;"></div>
+                                                <div id="fetchUser">
+                                                    
                                                 </div>
 
                                             </div>
@@ -204,6 +201,38 @@
     </div>
 
     <script type="text/javascript">
+
+        function fetchUser() {
+            var fetchUser = $("#fetchUser");
+            fetchUser.html("");
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "https://localhost:44358/api/Tbl_user",
+                contentType: "html",
+                success: function (data) {
+                    //console.log(data);
+                    $.each(data, function (index, value) {
+                        var Data = `<div data-dismiss="modal" aria-label="Close" onclick="selectCustomer(` + value.id + `)" class="infoCustomer--box p-2">
+                                        <p class="float-left mb-0" style="width: 30%;">`+ value.name + `</p>
+                                        <p class="float-left mb-0" style="width: 50%;">`+ value.address + `</p>
+                                        <p class="float-left mb-0" style="width: 20%;">`+ value.phone + `</p>
+                                        <div style="clear: both;"></div>
+                                    </div>`;
+                        fetchUser.append(Data);
+                    }
+                    )
+                }
+            });
+        }
+        var iduser = 0;
+        console.log(iduser);
+        function selectCustomer(id) {
+            //$("#selectUserDisplay").text(name);
+            iduser = id;
+            console.log(iduser);
+            //console.log(name);
+        }
 
 	var choosePayment = 0;
 	$(document).ready(function () {
@@ -336,7 +365,7 @@
         var refund = 0;
         var type = 0;
 
-        var iduser = 1;
+        
 
         var lackMoney = 0;
 	function addMoney(){
@@ -367,7 +396,6 @@
                 },
                 success: function (data) {
                     addBill();
-                    addNewOrder();
                 }
             });
         }
@@ -377,34 +405,19 @@
                 method: "post",
                 url: "https://localhost:44358/api/Tbl_bill/Create",
                 data: JSON.stringify({
-                    iduser: parseInt(iduser)
+                    iduser: parseInt(1)
                 }),
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 success: function (data) {
+                    window.location.href = "/Payment";
                 }
             });
         }
 
-        function addNewOrder() {
-            $.ajax({
-                method: "post",
-                url: "https://localhost:44358/api/Tbl_order/Create",
-                data: JSON.stringify({
-                    fee: 0,
-                    total: 0,
-                    discount:0
-                }),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                success: function (data) {
-                }
-            });
-        }
+        
     </script>
 
 

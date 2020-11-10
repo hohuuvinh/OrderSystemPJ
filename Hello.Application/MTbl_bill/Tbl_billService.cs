@@ -51,6 +51,7 @@ namespace HocDotNet.Application.MTbl_bill
 		{
 			var tbl_bill = new tbl_bill()
 			{
+				id = tbl_billRequest.id,
 				create_at = tbl_billRequest.create_at,
 				iduser = tbl_billRequest.iduser,
 				idpayment = tbl_billRequest.idpayment,

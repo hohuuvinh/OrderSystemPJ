@@ -7,12 +7,14 @@ using Hello.Application.MTbl_item;
 using Hello.Application.MTbl_order;
 using Hello.Application.MTbl_payment;
 using Hello.Application.MTbl_product;
+using Hello.Application.MTbl_user;
 using Hello.Data;
 using HocDotNet.Application.MTbl_bill;
 using HocDotNet.Application.MTbl_item;
 using HocDotNet.Application.MTbl_order;
 using HocDotNet.Application.MTbl_payment;
 using HocDotNet.Application.MTbl_product;
+using HocDotNet.Application.MTbl_user;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -44,6 +46,7 @@ namespace Hello.WebApi
             services.AddTransient<ITbl_itemService, Tbl_itemService>();
             services.AddTransient<ITbl_paymentService, Tbl_paymentService>();
             services.AddTransient<ITbl_billService, Tbl_billService>();
+            services.AddTransient<ITbl_userService, Tbl_userService>();
 
             services.AddControllersWithViews();
         }
