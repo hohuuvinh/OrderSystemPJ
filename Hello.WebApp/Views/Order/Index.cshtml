@@ -13,7 +13,7 @@
             <div class="container" style="height: 1000px">
                 <div class=" p-3" style="width: 100%">
                     <div class="btn btn-success float-left">Trở lại</div>
-                    <div onclick="addPayment()" class="btn btn-success float-right">Xác nhận</div>
+                    <div id="nextStep" onclick="addPayment()" class="btn btn-success float-right" style="display:none;">Xác nhận</div>
                     <p class="text-center font-weight-bold" style="font-size: 150%">Thanh toán</p>
                     <div style="clear: both;"></div>
                     <div class="row m-0">
@@ -374,7 +374,8 @@
         lackMoney = @Html.DisplayFor(model => model.total)-number;
         $("#lackMoney").text(lackMoney);
         if (lackMoney < 0) {
-            $("#refund").text(lackMoney*(-1));
+            $("#refund").text(lackMoney * (-1));
+            $("#nextStep").show();
         }
         receive = number;
         refund = lackMoney * (-1);
