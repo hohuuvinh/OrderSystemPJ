@@ -16,6 +16,6 @@ namespace Hello.Application.MTbl_user
 
 		public Task<List<Tbl_userResponse>> GetAll();
 
-
+		public Task<List<Tbl_userResponse>> SearchUser(Tbl_userRequest tbl_userRequest);
 	}
 }

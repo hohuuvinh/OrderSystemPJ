@@ -49,5 +49,11 @@ namespace Hello.Api.Controllers
 			return Ok(await _nhanSuSerive.Delete(request));
 		}
 
+		[HttpPost("SearchUser")]
+		public async Task<IActionResult> SearchProduct([FromBody]Tbl_userRequest request)
+		{
+			return Ok(await _nhanSuSerive.SearchUser(request));
+		}
+
 	}
 }

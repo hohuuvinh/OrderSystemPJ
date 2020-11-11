@@ -71,5 +71,19 @@ namespace HocDotNet.Application.MTbl_user
 				}).ToListAsync();
 		}
 
+		public async Task<List<Tbl_userResponse>> SearchUser(Tbl_userRequest tbl_userRequest)
+		{
+			var query = from us in _context.tbl_users
+						where EF.Functions.Like(us.name, tbl_userRequest.name)
+						select new { us };
+			return await query.Select(x => new Tbl_userResponse()
+			{
+				id = x.us.id,
+				name = x.us.name,
+				address = x.us.address,
+				phone = x.us.phone,
+			}).ToListAsync();
+		}
+
 	}
 }
