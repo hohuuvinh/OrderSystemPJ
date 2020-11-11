@@ -213,7 +213,7 @@
                 success: function (data) {
                     //console.log(data);
                     $.each(data, function (index, value) {
-                        var Data = `<div data-dismiss="modal" aria-label="Close" onclick="selectCustomer(` + value.id + `)" class="infoCustomer--box p-2">
+                        var Data = `<div data-dismiss="modal" aria-label="Close" onclick="selectCustomer(` + value.id + `,'` + value.name + `')" class="infoCustomer--box p-2">
                                         <p class="float-left mb-0" style="width: 30%;">`+ value.name + `</p>
                                         <p class="float-left mb-0" style="width: 50%;">`+ value.address + `</p>
                                         <p class="float-left mb-0" style="width: 20%;">`+ value.phone + `</p>
@@ -227,11 +227,11 @@
         }
         var iduser = 0;
         console.log(iduser);
-        function selectCustomer(id) {
-            //$("#selectUserDisplay").text(name);
+        function selectCustomer(id,name) {
+            $("#selectUserDisplay").text(name);
             iduser = id;
             console.log(iduser);
-            //console.log(name);
+            console.log(name);
         }
 
 	var choosePayment = 0;
@@ -406,7 +406,7 @@
                 method: "post",
                 url: "https://localhost:44358/api/Tbl_bill/Create",
                 data: JSON.stringify({
-                    iduser: parseInt(1)
+                    iduser: parseInt(iduser)
                 }),
                 headers: {
                     'Accept': 'application/json',

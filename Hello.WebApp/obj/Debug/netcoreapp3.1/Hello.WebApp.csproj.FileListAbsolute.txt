@@ -160,3 +160,9 @@ C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\_calculator.cshtml.g.cs
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Order\Index.cshtml.g.cs
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Payment\Index.cshtml.g.cs
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

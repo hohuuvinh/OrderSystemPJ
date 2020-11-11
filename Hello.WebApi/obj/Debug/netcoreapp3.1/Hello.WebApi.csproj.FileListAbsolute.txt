@@ -76,5 +76,10 @@ C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.dll
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.pdb
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.genruntimeconfig.cache
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.csproj.CoreCompileInputs.cache
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApi\obj\Debug\netcoreapp3.1\Hello.WebApi.MvcApplicationPartsAssemblyInfo.cache

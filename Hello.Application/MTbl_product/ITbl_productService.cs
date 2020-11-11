@@ -20,7 +20,7 @@ namespace Hello.Application.MTbl_product
 
 		public Task<List<Tbl_productResponse>> GetDrink();
 
-		public Task<tbl_product> SearchProduct(string name);
+		public Task<List<Tbl_productResponse>> SearchProduct(Tbl_productRequest tbl_productRequest);
 
 	}
 }

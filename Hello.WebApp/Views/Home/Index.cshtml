@@ -19,7 +19,11 @@
         background-color: green;
     }
 </style>
-
+<div style="position: absolute;right: 0;width: 330px;height: 40px;margin-top: calc(100vh - 40px);z-index:999;">
+    <div style="border-bottom: 40px solid #28a745;border-left: 25px solid transparent;width: 330px;">
+        <p class="text-white font-weight-bold float-right ml-2" style="position: absolute;line-height: 40px;font-size: 100%"> <a class="mr-3 text-white" style="text-decoration: none;">Sản phẩm</a><a class="mr-3 text-white" style="text-decoration: none;">Khách hàng</a><a class="mr-3 text-white" style="text-decoration: none;">Đơn hàng</a></p>
+    </div>
+</div>
 <div class="container-fluid p-0" style="height: 100vh; min-width: 1000px">
     <div class="float-left" style="width: 380px;height: 100vh;border-right: 2px solid #28a745">
         <div style="width: 100%;height: 50px;background: #fff">
@@ -140,21 +144,45 @@
 </div>
 
 <script>
-    searchProduct();
-
-    function searchProduct() {
-        $.ajax({
-            method: "get",
-            url: "https://localhost:44358/api/Tbl_product/SearchProduct/m",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            success: function (data) {
-                console.log(data);
-            }
-        });
-    }
+    $('#inputSearch').on('keyup', function () {
+            var SetGetAjax = $("#GetAjax");
+            SetGetAjax.html("");
+            var inputSearch = $("#inputSearch").val();
+            console.log(inputSearch);
+            $(document).ready(function () {
+                $("#GetAll").hide();
+                $("#GetAjax").show();
+                $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    url: "https://localhost:44358/api/Tbl_product/SearchProduct",
+                    data: JSON.stringify({
+                        name: "%" + inputSearch + "%",
+                    }),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    contentType: "html",
+                    success: function (data) {
+                        //console.log(data);
+                        $.each(data, function (index, value) {
+                            var Data = `<div onclick="addToCart(` + value.id + ` , ` + value.price + `)" class="col-2 p-2">
+                                <div class="shadow-ok" style="width: 100%;height: 160px;background: #fff;border-radius:10px;">
+                                    <img src="/image/`+ value.image + `" width="100%" height="100px" style="border-top-left-radius:10px;border-top-right-radius:10px;">
+                                    <p class="font-weight-bold text-center mt-1 mb-0" style="font-size:95%">`+ value.name + `</p>
+                                    <p class="text-center">`+ value.price + `đ</p>
+                                </div>
+                            </div>`;
+                            SetGetAjax.append(Data);
+                        }
+                        )
+                    }
+                });
+            })
+        })
+        
+    
 
 
     function addToCart(id,pricedf) {

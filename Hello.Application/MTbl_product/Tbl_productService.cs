@@ -103,9 +103,19 @@ namespace HocDotNet.Application.MTbl_product
 			}).ToListAsync();
 		}
 
-		public async Task<tbl_product> SearchProduct(string name)
+		public async Task<List<Tbl_productResponse>> SearchProduct(Tbl_productRequest tbl_productRequest)
 		{
-			return await _context.tbl_products.FindAsync(name);
+			var query = from pr in _context.tbl_products
+						where EF.Functions.Like(pr.name, tbl_productRequest.name)
+						select new { pr };
+			return await query.Select(x => new Tbl_productResponse()
+			{
+				id = x.pr.id,
+				name = x.pr.name,
+				price = x.pr.price,
+				image = x.pr.image,
+				category = x.pr.category
+			}).ToListAsync();
 		}
 	}
 }
