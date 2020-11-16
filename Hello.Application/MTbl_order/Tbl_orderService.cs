@@ -86,10 +86,39 @@ namespace HocDotNet.Application.MTbl_order
 		}
 
 
+		public async Task<List<Tbl_orderResponse>> GetOrderByIdOrder(int id)
+		{
+			var query = from or in _context.tbl_orders
+						join it in _context.tbl_items on or.id equals it.idorder
+						join pr in _context.tbl_products on it.idproduct equals pr.id
+						where or.id == id
+						select new { or, it, pr };
+			return await query.Select(x => new Tbl_orderResponse()
+			{
+
+				id = x.pr.id,
+				iditem = x.it.id,
+				idproduct = x.pr.id,
+				idorder = x.or.id,
+				discount = x.it.discount,
+				quanlity = x.it.quanlity,
+				priceItem = x.it.price,
+				name = x.pr.name,
+				price = x.pr.price,
+				image = x.pr.image,
+				category = x.pr.category
+			}).ToListAsync();
+		}
+
+
 		public async Task<tbl_order> GetOrderMax()
 		{
 			int maxId = _context.tbl_orders.Max(u => u.id);
 			return await _context.tbl_orders.FirstOrDefaultAsync(x => x.id == maxId);
 		}
+
+
+
+		
 	}
 }

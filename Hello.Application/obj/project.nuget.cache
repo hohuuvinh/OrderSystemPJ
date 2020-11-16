@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Y9SXYt0XoQxlC8Jt4kXvplyC4nCcoIOnL0q1cNNff/spGBzWNN/d5lw+X74TE2cMILjaAkV/jaMwyA8mkUPBrg==",
+  "dgSpecHash": "cKna1qd4thTaZtP2u7n0J7B0bpNK7woaHWe73wKegWwWPRB+a1CutZYYF83xKe4GmE7xX1Z4VcFlszgVxbLOnQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\KimAnh\\source\\repos\\OrderSystemPJ\\Hello.Application\\Hello.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.0\\microsoft.aspnetcore.http.features.5.0.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
@@ -23,7 +24,7 @@
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.extensions.logging\\3.1.9\\microsoft.extensions.logging.3.1.9.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.9\\microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.extensions.options\\3.1.9\\microsoft.extensions.options.3.1.9.nupkg.sha512",
-    "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.9\\microsoft.extensions.primitives.3.1.9.nupkg.sha512",
+    "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.identity.client\\3.0.8\\microsoft.identity.client.3.0.8.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\5.5.0\\microsoft.identitymodel.jsonwebtokens.5.5.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\microsoft.identitymodel.logging\\5.5.0\\microsoft.identitymodel.logging.5.5.0.nupkg.sha512",
@@ -60,6 +61,7 @@
     "C:\\Users\\KimAnh\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\KimAnh\\.nuget\\packages\\system.io.pipelines\\5.0.0\\system.io.pipelines.5.0.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\KimAnh\\.nuget\\packages\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",

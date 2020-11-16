@@ -19,5 +19,8 @@ namespace Hello.Application.MTbl_order
 
 		public Task<tbl_order> GetOrderMax();
 
+
+		public Task<List<Tbl_orderResponse>> GetOrderByIdOrder(int id);
+
 	}
 }

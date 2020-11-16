@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Hello.Application.MTbl_product
@@ -11,5 +13,8 @@ namespace Hello.Application.MTbl_product
         public float price { get; set; }
         public string image { get; set; }
         public int category { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
     }
 }

@@ -30,6 +30,15 @@
     }
 </style>
 <body style="overflow-y:hidden">
+    <div style="position: absolute;right: 0;width: 330px;height: 40px;margin-top: calc(100vh - 40px);z-index:999;">
+        <div style="border-bottom: 40px solid #28a745;border-left: 25px solid transparent;width: 330px;">
+            <p class="text-white font-weight-bold float-right ml-2" style="position: absolute;line-height: 40px;font-size: 100%">
+                <a href="Product" class="mr-3 text-white" style="text-decoration: none;">Sản phẩm</a>
+                <a href="User" class="mr-3 text-white" style="text-decoration: none;">Khách hàng</a>
+                <a href="OrderManage" class="mr-3 text-white" style="text-decoration: none;">Đơn hàng</a>
+            </p>
+        </div>
+    </div>
     @RenderBody()
     @RenderSection("Scripts", required: false)
 </body>

@@ -166,3 +166,7 @@ C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
 C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\KimAnh\source\repos\OrderSystemPJ\Hello.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\OrderManage\Index.cshtml.g.cs

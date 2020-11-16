@@ -100,5 +100,30 @@ namespace HocDotNet.Application.MTbl_payment
 			}).FirstOrDefaultAsync();
 		}
 
+
+		public async Task<List<Tbl_paymentResponse>> GetPaymentAll()
+		{
+			var query = from or in _context.tbl_orders
+						join pm in _context.tbl_payments on or.id equals pm.idorder
+						join b in _context.tbl_bills on pm.id equals b.idpayment
+						join us in _context.tbl_users on b.iduser equals us.id
+						orderby pm.id descending
+						select new { or, pm, b, us };
+			return await query.Select(x => new Tbl_paymentResponse()
+			{
+
+				id = x.pm.id,
+				receive = x.pm.receive,
+				refund = x.pm.refund,
+				type = x.pm.type,
+				idorder = x.pm.idorder,
+				create_at = x.b.create_at,
+				name = x.us.name,
+				fee = x.or.fee,
+				total = x.or.total,
+				discount = x.or.discount
+			}).ToListAsync();
+		}
+
 	}
 }

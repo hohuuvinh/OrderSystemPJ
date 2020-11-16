@@ -54,5 +54,12 @@ namespace Hello.Api.Controllers
 			return Ok(await _nhanSuSerive.GetPaymentMax());
 		}
 
+
+		[HttpGet("GetPaymentAll")]
+		public async Task<IActionResult> GetPaymentAll()
+		{
+			return Ok(await _nhanSuSerive.GetPaymentAll());
+		}
+
 	}
 }

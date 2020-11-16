@@ -16,6 +16,8 @@ namespace Hello.Application.MTbl_payment
 
 		public Task<List<Tbl_paymentResponse>> GetAll();
 		public Task<Tbl_paymentResponse> GetPaymentMax();
-		
+
+		public Task<List<Tbl_paymentResponse>> GetPaymentAll();
+
 	}
 }

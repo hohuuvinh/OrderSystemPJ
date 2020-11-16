@@ -56,5 +56,12 @@ namespace Hello.Api.Controllers
 			return Ok(await _nhanSuSerive.GetOrderMax());
 		}
 
+
+		[HttpGet("GetOrderByIdOrder/{id}")]
+		public async Task<IActionResult> GetOrderByIdOrder(int id)
+		{
+			return Ok(await _nhanSuSerive.GetOrderByIdOrder(id));
+		}
+
 	}
 }
